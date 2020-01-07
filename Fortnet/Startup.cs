@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.EntityFrameworkCore;
+using Fortnet.Models;
 
 namespace Fortnet
 {
@@ -33,6 +35,10 @@ namespace Fortnet
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            services.AddDbContext<FortnetContext>(options =>
+                    options.UseMySql(Configuration.GetConnectionString("FortnetContext"), builder =>
+                        builder.MigrationsAssembly("Fortnet")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

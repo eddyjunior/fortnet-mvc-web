@@ -1,6 +1,6 @@
 using System;
 
-namespace Fortnet.Models
+namespace Fortnet.Models.ViewModels
 {
     public class ErrorViewModel
     {
